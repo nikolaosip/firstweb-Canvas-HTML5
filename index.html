@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="keywords" content="HTML, CSS, JavaScript,Canvas">
+		<meta name="vieport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="nikolaosip">
+			<title>LinkCss</title>
+
+	<link rel="stylesheet" type="text/css" href="myStyle.css">
+	</head>
+
+	<body>
+
+	<div class=container>
+		<div class=myTop><h1>Link scc to HTML</h1></div> <br>
+
+		<div class="box-1">
+			Canvas has been motified by css .<br>
+		          CSS stands for Cascading Style Sheets.<br>
+			 CSS describes how HTML elements are to be displayed on screen, paper, or in other media.<br>
+			 CSS saves a lot of work. It can control the layout of multiple web pages all at once.
+			 External stylesheets are stored in CSS files.
+
+
+		</div>
+	</div>
+		<div class="boxcan">
+		<canvas id="my_canvas"  style = "border:6px solid #993300; background:#ffcc99;">
+		Your browser does not support Canvas</canvas>
+		</div>
+
+		<script>
+
+			var canvas = document.getElementById('my_canvas');
+			var ctx = canvas.getContext('2d');
+
+			canvas.width=0.6*screen.width;
+			var w= canvas.width;
+			canvas.height= 0.6*w;
+			var h= canvas.height;
+
+			var particles = {};
+			var particleIndex =0;
+			var particleNum= 20;
+			var smokes=[];
+
+
+			var xs=0, ys=0,f=0, num=4, sm=0;
+			var ff=0;
+
+		var myColor= ["#666666", "#b3b3b3", "#d9d9d9"]
+
+		function Train(x,y,a,b){
+			this.x= x+f;
+			this.y= y;
+			this.a= a;
+			this.b= b;
+
+			this.show= function(){
+				ctx.beginPath();
+				ctx.stokeStyle = "#d9d9d9";
+				ctx.moveTo(this.x, this.y+2*this.b);
+				ctx.lineTo(this.x, this.y);
+				ctx.lineTo(this.x+this.a, this.y);
+				ctx.lineTo(this.x+this.a, this.y-this.b);
+				ctx.lineTo(this.x+0.5*this.a, this.y-this.b);
+				ctx.lineTo(this.x+0.5*this.a, this.y-1.5*this.b);
+				ctx.lineTo(this.x+2*this.a, this.y-1.5*this.b);
+				ctx.lineTo(this.x+1.8*this.a, this.y-3*this.b);
+				ctx.lineTo(this.x+2.4*this.a, this.y-3*this.b);
+				ctx.lineTo(this.x+2.2*this.a, this.y-1.5*this.b);
+				ctx.lineTo(this.x+2.5*this.a, this.y-1.5*this.b);
+				ctx.arc(this.x+2.5*this.a, 0.7*this.b+this.y, 1.3*this.b,3*Math.PI/2, Math.PI/2, false);
+				ctx.closePath();
+				ctx.stroke();
+
+
+				for(var t=1; t<4; t++){
+					ctx.beginPath();
+					ctx.stokeStyle = "#d9d9d9";
+					ctx.arc(this.x+(t-.4)*.8*this.a, 2*this.b+this.y, .3*this.a,0, 2*Math.PI/2, false);
+					ctx.stroke();
+				}
+
+
+			}
+
+			this.move= function(){
+				f+=1.5;
+
+				if(f>w){
+					f=0;
+					this.x=x+f;
+
+			   }
+
+
+			}
+		}
+
+				function Smoke(x,y){
+
+					this.x= x+ sm+ Math.random()*4;
+					this.y= y-Math.random()*2*sm;
+					this.color= myColor[Math.floor(Math.random()*myColor.length)];
+					this.show= function(){
+					    ctx.beginPath();
+						ctx.arc(this.x, this.y, 6, 0, 2*Math.PI, true);
+						ctx.fillStyle =this.color;
+						ctx.fill();
+					}
+					this.move= function(){
+					  this.y-= Math.random()*4;
+					   // xs+=Math.random()*2-1;
+					   // ys+=-.01;
+					    if(sm>w){
+					    sm=0;
+
+
+					   }
+                        this.x+=5- Math.random()*10;
+					}
+
+
+
+				}
+
+				function draw(){
+
+				       ctx.save();
+			              ctx.clearRect(0,0, w,h);
+
+                                   showTr();
+
+			}
+setInterval(draw, 40);
+
+	function showTr(){
+		var tr= new Train(-20, 6*h/7,40,18);
+			tr.show();
+			tr.move();
+
+
+			for(var j=0; j<2; j++){
+			var s= new Smoke(tr.x + 80, tr.y- 65);
+			smokes.push(s);}
+			for(var i=0; i<smokes.length; i++){
+				smokes[i].show();
+				smokes[i].move();
+				if(smokes[i].y<120){
+					smokes.splice(i,1);
+				}
+			}
+
+	}
+		/*<meta http-equiv="refresh" content="20">*/
+			</script>
+
+			<div class="parent2">
+
+				<div class="home">
+					Go to second page <a href="second.html">Second</a>
+				</div>
+
+				<div class="contact">
+					<a href="mailto:xalko@protonmail.com">email</a>
+				</div>
+
+			</div>
+
+	</body>
+</html>

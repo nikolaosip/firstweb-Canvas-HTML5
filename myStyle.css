@@ -1,0 +1,81 @@
+*{
+	box-sizing:border-box;
+
+}
+body{
+
+	background-color:coral;
+	color:#003366;
+	font-family: Tahoma, Arial,sans-serif;
+	font-size: 22px;
+	font-weight:bold;
+	/*same as above
+	font:22px normal Tahoma, Arial,sans-serif;  */
+
+	line-height:1.6em;
+	margin:0;
+	padding:0px;
+
+}
+
+.myTop{
+	margin:0 auto;
+	text-align: center;
+
+	padding:0;
+
+
+}
+
+.myTop h1{
+	display:inline-block;
+    font:bold Tahoma, Arial,sans-serif;
+    color:yellow;
+	background-color:blue;
+	padding:4px;
+	margin:0;
+}
+
+
+.container{
+	width:70%;
+	margin:auto;
+
+}
+
+.box-1{
+	background-color:#b32d00;
+	color:#ffffcc;
+
+	border-right:8px #ff3399 solid;
+	border-left:8px #ff3399 solid;
+	border-top:12px #ccff66 solid;
+	border-bottom:12px #ccff66 solid;
+
+	padding:12px 10px;
+
+}
+#my_canvas{
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+
+	display: block;
+
+	width:70%;
+		}
+
+		.parent2{
+			display:flex;
+			flex-flow:row wrap;
+			justify-content:space-evenly;
+			align-items:center;
+
+			background-color:#ccffcc;
+			color:black;
+			max-width:80%;
+			font:italic bold 22px Tahoma,Arial;
+			border:8px groove  #00a3cc;
+			margin:0 auto;
+
+		}
