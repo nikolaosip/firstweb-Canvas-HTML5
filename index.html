@@ -58,6 +58,7 @@
 			this.b= b;
 
 			this.show= function(){
+				ctx.save();
 				ctx.beginPath();
 				ctx.stokeStyle = "#d9d9d9";
 				ctx.moveTo(this.x, this.y+2*this.b);
@@ -128,7 +129,7 @@
 
 				function draw(){
 
-				       ctx.save();
+				       //ctx.save();
 			              ctx.clearRect(0,0, w,h);
 
                                    showTr();
